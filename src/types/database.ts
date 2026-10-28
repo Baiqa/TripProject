@@ -34,13 +34,114 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          display_name: string
+          id: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          display_name: string
+          id: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          display_name?: string
+          id?: string
+        }
+        Relationships: []
+      }
+      trip_members: {
+        Row: {
+          joined_at: string
+          role: string
+          status: string
+          trip_id: string
+          user_id: string
+        }
+        Insert: {
+          joined_at?: string
+          role: string
+          status?: string
+          trip_id: string
+          user_id: string
+        }
+        Update: {
+          joined_at?: string
+          role?: string
+          status?: string
+          trip_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "trip_members_trip_id_fkey"
+            columns: ["trip_id"]
+            isOneToOne: false
+            referencedRelation: "trips"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "trip_members_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      trips: {
+        Row: {
+          base_currency: string
+          created_at: string
+          created_by: string
+          description: string | null
+          end_date: string
+          id: string
+          start_date: string
+          title: string
+        }
+        Insert: {
+          base_currency?: string
+          created_at?: string
+          created_by: string
+          description?: string | null
+          end_date: string
+          id?: string
+          start_date: string
+          title: string
+        }
+        Update: {
+          base_currency?: string
+          created_at?: string
+          created_by?: string
+          description?: string | null
+          end_date?: string
+          id?: string
+          start_date?: string
+          title?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "trips_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      is_trip_member: { Args: { _trip_id: string }; Returns: boolean }
+      trip_role: { Args: { _trip_id: string }; Returns: string }
     }
     Enums: {
       [_ in never]: never

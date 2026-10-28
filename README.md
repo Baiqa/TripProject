@@ -10,6 +10,16 @@ Next.js (App Router) + TypeScript strict · Tailwind CSS + shadcn/ui · TanStack
 
 Полный контекст, бизнес-правила и структура — в [`CLAUDE.md`](./CLAUDE.md) и [`docs/tz.md`](./docs/tz.md).
 
+Правила работы с ветками, коммитами и PR — в [`CONTRIBUTING.md`](./CONTRIBUTING.md). Матрица компетенций команды и распределение функций (задание 4) — в [`docs/team/zadanie-4-otchet.docx`](./docs/team/zadanie-4-otchet.docx).
+
+## Документация
+
+| Документ | Что внутри |
+|---|---|
+| [`docs/tz.md`](./docs/tz.md) | Полное техническое задание: требования (`EXP-04`, `BR-02` и т.д.), бизнес-правила, разделы 1–14 |
+| [`docs/er-diagram.md`](./docs/er-diagram.md) | ER-диаграмма базы данных (раздел 8 ТЗ) — таблицы, связи, инварианты (`BR-04`, `BR-08`, `BR-11`) |
+| [`docs/mockups.md`](./docs/mockups.md) | Макеты всех экранов (раздел 9 и 13.5 ТЗ) — рабочие страницы Next.js на мок-данных, скриншоты 360px и 1280px для каждого маршрута |
+
 ## Запуск локально
 
 Требуется: Node.js 20+, Docker Desktop (для локального Supabase).

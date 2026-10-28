@@ -52,3 +52,8 @@ next-env.d.ts
 
 # local scratch (plan copies, etc.)
 /tmp/
+
+# Claude Code harness local state
+/.claude/
+/CLAUDE.md
+/env.example

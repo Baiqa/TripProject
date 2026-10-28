@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Project xmlns="http://schemas.microsoft.com/project">
+  <SaveVersion>14</SaveVersion>
+  <Name>TripProject_Etap_E2_Sprint1.xml</Name>
+  <Title>TripProject — Этап E2 — Спринт 1 «Ввод и деление расхода»</Title>
+  <Subject>Задание 7 — календарный план (УиККРПО)</Subject>
+  <Company>TripProject team</Company>
+  <Manager>Байгабатов М.</Manager>
+  <CreationDate>2026-10-18T20:30:00</CreationDate>
+  <LastSaved>2026-10-19T09:00:00</LastSaved>
+  <ScheduleFromStart>1</ScheduleFromStart>
+  <StartDate>2026-10-19T09:00:00</StartDate>
+  <FinishDate>2026-11-13T18:00:00</FinishDate>
+  <FYStartDate>1</FYStartDate>
+  <CriticalSlackLimit>0</CriticalSlackLimit>
+  <CurrencyDigits>0</CurrencyDigits>
+  <CurrencySymbol>KZT</CurrencySymbol>
+  <CurrencySymbolPosition>0</CurrencySymbolPosition>
+  <CalendarUID>1</CalendarUID>
+  <DefaultStartTime>09:00:00</DefaultStartTime>
+  <DefaultFinishTime>11:00:00</DefaultFinishTime>
+  <MinutesPerDay>120</MinutesPerDay>
+  <MinutesPerWeek>600</MinutesPerWeek>
+  <DaysPerMonth>20</DaysPerMonth>
+  <DefaultTaskType>1</DefaultTaskType>
+  <DefaultFixedCostAccrual>3</DefaultFixedCostAccrual>
+  <DefaultStandardRate>2000</DefaultStandardRate>
+  <DefaultOvertimeRate>0</DefaultOvertimeRate>
+  <DurationFormat>7</DurationFormat>
+  <WeekStartDay>1</WeekStartDay>
+  <MonthFormat>0</MonthFormat>
+  <WorkFormat>2</WorkFormat>
+
+  <!--
+    Примечание команды (не входит в схему MS Project, информационно):
+    Это интерчейндж-формат MS Project XML — открывается и в ProjectLibre (Файл → Открыть),
+    и в MS Project. Нативный .pod получится после «Сохранить как» в ProjectLibre.
+    Календарь каждого участника упрощён до 2 ч/день (09:00–11:00, Пн–Пт) — это отражает
+    реальную доступность по уставу (5–8 ч/нед у каждого при параллельных курсах), а не
+    полный рабочий день. Даты задач заданы явно по ручному расчёту (задание 7, раздел 5);
+    после открытия файла рекомендуется пересчитать план (клавиша F9) и свериться с таблицей
+    задач в отчёте — при пересчёте программа может скорректировать даты на часы/минуты.
+    Спринт 1 заканчивается по критическому пути 28.10.2026; формальная граница спринта —
+    30.10.2026 (резерв 2 рабочих дня). Спринт 2 показан укрупнённой работой-прогнозом без
+    детализации задач, как того требует задание 7 (п.6: «подробная оценка далёких задач не нужна»).
+  -->
+
+  <Calendars>
+    <Calendar>
+      <UID>1</UID>
+      <Name>Standard (2 ч/день, доступность участников TripProject)</Name>
+      <IsBaseCalendar>1</IsBaseCalendar>
+      <BaseCalendarUID>-1</BaseCalendarUID>
+      <WeekDays>
+        <WeekDay>
+          <DayType>1</DayType>
+          <DayWorking>0</DayWorking>
+        </WeekDay>
+        <WeekDay>
+          <DayType>2</DayType>
+          <DayWorking>1</DayWorking>
+          <WorkingTimes>
+            <WorkingTime><FromTime>09:00:00</FromTime><ToTime>11:00:00</ToTime></WorkingTime>
+          </WorkingTimes>
+        </WeekDay>
+        <WeekDay>
+          <DayType>3</DayType>
+          <DayWorking>1</DayWorking>
+          <WorkingTimes>
+            <WorkingTime><FromTime>09:00:00</FromTime><ToTime>11:00:00</ToTime></WorkingTime>
+          </WorkingTimes>
+        </WeekDay>
+        <WeekDay>
+          <DayType>4</DayType>
+          <DayWorking>1</DayWorking>
+          <WorkingTimes>
+            <WorkingTime><FromTime>09:00:00</FromTime><ToTime>11:00:00</ToTime></WorkingTime>
+          </WorkingTimes>
+        </WeekDay>
+        <WeekDay>
+          <DayType>5</DayType>
+          <DayWorking>1</DayWorking>
+          <WorkingTimes>
+            <WorkingTime><FromTime>09:00:00</FromTime><ToTime>11:00:00</ToTime></WorkingTime>
+          </WorkingTimes>
+        </WeekDay>
+        <WeekDay>
+          <DayType>6</DayType>
+          <DayWorking>1</DayWorking>
+          <WorkingTimes>
+            <WorkingTime><FromTime>09:00:00</FromTime><ToTime>11:00:00</ToTime></WorkingTime>
+          </WorkingTimes>
+        </WeekDay>
+        <WeekDay>
+          <DayType>7</DayType>
+          <DayWorking>0</DayWorking>
+        </WeekDay>
+      </WeekDays>
+    </Calendar>
+  </Calendars>
+
+  <Tasks>
+    <Task>
+      <UID>1</UID><ID>1</ID><Name>TripProject — Этап E2 (Деньги)</Name>
+      <OutlineNumber>1</OutlineNumber><OutlineLevel>1</OutlineLevel><WBS>1</WBS>
+      <Summary>1</Summary><Type>1</Type><IsNull>0</IsNull>
+      <Start>2026-10-19T09:00:00</Start><Finish>2026-11-13T18:00:00</Finish>
+      <Notes>Релиз: ядро денежных расчётов BR-01..BR-06 и экран предпросмотра без сохранения в БД. Задание 6/7, устав v0.1.</Notes>
+    </Task>
+
+    <Task>
+      <UID>2</UID><ID>2</ID><Name>Спринт 1 — Ввод и деление расхода (19.10–30.10.2026)</Name>
+      <OutlineNumber>1.1</OutlineNumber><OutlineLevel>2</OutlineLevel><WBS>1.1</WBS>
+      <Summary>1</Summary><Type>1</Type><IsNull>0</IsNull>
+      <Start>2026-10-19T09:00:00</Start><Finish>2026-10-30T18:00:00</Finish>
+      <Notes>Цель: участник вводит сумму и делит расход поровну/точными суммами с проверкой инварианта BR-04. 18 SP (US06,US07,US01,US02,US03,US08). Критический путь задач заканчивается 28.10 — резерв 29-30.10 до формальной границы спринта.</Notes>
+    </Task>
+
+    <Task>
+      <UID>3</UID><ID>3</ID><Name>Веха: план спринта согласован</Name>
+      <OutlineNumber>1.1.1</OutlineNumber><OutlineLevel>3</OutlineLevel><WBS>1.1.1</WBS>
+      <Milestone>1</Milestone><Type>1</Type><IsNull>0</IsNull><DurationFormat>7</DurationFormat>
+      <Duration>PT0H0M0S</Duration>
+      <Start>2026-10-19T09:00:00</Start><Finish>2026-10-19T09:00:00</Finish>
+    </Task>
+
+    <Task>
+      <UID>4</UID><ID>4</ID><Name>T01 / US06 — currencies.ts + formatMoney() с тестами</Name>
+      <OutlineNumber>1.1.2</OutlineNumber><OutlineLevel>3</OutlineLevel><WBS>1.1.2</WBS>
+      <Type>1</Type><IsNull>0</IsNull><DurationFormat>21</DurationFormat>
+      <Duration>PT2H0M0S</Duration><Work>PT2H0M0S</Work>
+      <Start>2026-10-19T09:00:00</Start><Finish>2026-10-19T11:00:00</Finish>
+      <PredecessorLink><PredecessorUID>3</PredecessorUID><Type>1</Type></PredecessorLink>
+      <Notes>Критерий завершения: тесты зелёные на ≥3 валютах (разное число знаков). Исполнитель: Надыров А. Проверяющий: Тагиев Р. (T03).</Notes>
+    </Task>
+
+    <Task>
+      <UID>5</UID><ID>5</ID><Name>T02 / US07 — parseMoneyInput() с тестами</Name>
+      <OutlineNumber>1.1.3</OutlineNumber><OutlineLevel>3</OutlineLevel><WBS>1.1.3</WBS>
+      <Type>1</Type><IsNull>0</IsNull><DurationFormat>21</DurationFormat>
+      <Duration>PT2H0M0S</Duration><Work>PT2H0M0S</Work>
+      <Start>2026-10-19T09:00:00</Start><Finish>2026-10-19T11:00:00</Finish>
+      <PredecessorLink><PredecessorUID>3</PredecessorUID><Type>1</Type></PredecessorLink>
+      <Notes>Критерий завершения: «1000,50» и «1000.5» дают одинаковый результат, тест зелёный. Исполнитель: Байгабатов М. Проверяющий: Тагиев Р. (T03).</Notes>
+    </Task>
+
+    <Task>
+      <UID>6</UID><ID>6</ID><Name>T03 / US06,US07 — ревью T01+T02</Name>
+      <OutlineNumber>1.1.4</OutlineNumber><OutlineLevel>3</OutlineLevel><WBS>1.1.4</WBS>
+      <Type>1</Type><IsNull>0</IsNull><DurationFormat>21</DurationFormat>
+      <Duration>PT1H0M0S</Duration><Work>PT1H0M0S</Work>
+      <Start>2026-10-20T10:00:00</Start><Finish>2026-10-20T11:00:00</Finish>
+      <PredecessorLink><PredecessorUID>4</PredecessorUID><Type>1</Type></PredecessorLink>
+      <PredecessorLink><PredecessorUID>5</PredecessorUID><Type>1</Type></PredecessorLink>
+      <Notes>Исполнитель: Тагиев Р. Критерий: замечания оставлены или подтверждено их отсутствие, PR готов к слиянию.</Notes>
+    </Task>
+
+    <Task>
+      <UID>7</UID><ID>7</ID><Name>T04 / US01 — UI-каркас экрана предпросмотра</Name>
+      <OutlineNumber>1.1.5</OutlineNumber><OutlineLevel>3</OutlineLevel><WBS>1.1.5</WBS>
+      <Type>1</Type><IsNull>0</IsNull><DurationFormat>21</DurationFormat>
+      <Duration>PT3H0M0S</Duration><Work>PT3H0M0S</Work>
+      <Start>2026-10-20T09:00:00</Start><Finish>2026-10-21T10:00:00</Finish>
+      <PredecessorLink><PredecessorUID>4</PredecessorUID><Type>1</Type></PredecessorLink>
+      <PredecessorLink><PredecessorUID>5</PredecessorUID><Type>1</Type></PredecessorLink>
+      <Notes>Исполнитель: Надыров А. Проверяющий: Тагиев Р. Критерий: страница отображается на моках, сумма вводится и форматируется.</Notes>
+    </Task>
+
+    <Task>
+      <UID>8</UID><ID>8</ID><Name>T05 / US01 — lib/money: деление поровну (BR-02) + обязательные тесты</Name>
+      <OutlineNumber>1.1.6</OutlineNumber><OutlineLevel>3</OutlineLevel><WBS>1.1.6</WBS>
+      <Type>1</Type><IsNull>0</IsNull><DurationFormat>21</DurationFormat>
+      <Duration>PT3H0M0S</Duration><Work>PT4H0M0S</Work>
+      <Start>2026-10-20T09:00:00</Start><Finish>2026-10-21T10:00:00</Finish>
+      <Notes>Исполнитель: Байгабатов М. (3 ч), помощник (пара, передача знаний BR-правил): Тагиев Р. (1 ч). Проверяющий: Надыров А. Критерий: обязательные кейсы CLAUDE.md покрыты тестами, инвариант суммы долей проверен.</Notes>
+    </Task>
+
+    <Task>
+      <UID>9</UID><ID>9</ID><Name>T06 / US01 — подключение деления поровну к UI</Name>
+      <OutlineNumber>1.1.7</OutlineNumber><OutlineLevel>3</OutlineLevel><WBS>1.1.7</WBS>
+      <Type>1</Type><IsNull>0</IsNull><DurationFormat>21</DurationFormat>
+      <Duration>PT2H0M0S</Duration><Work>PT2H0M0S</Work>
+      <Start>2026-10-21T10:00:00</Start><Finish>2026-10-22T10:00:00</Finish>
+      <PredecessorLink><PredecessorUID>7</PredecessorUID><Type>1</Type></PredecessorLink>
+      <PredecessorLink><PredecessorUID>8</PredecessorUID><Type>1</Type></PredecessorLink>
+      <Notes>Исполнитель: Надыров А. Проверяющий: Тагиев Р. Критерий: доли на экране совпадают с AC01/AC02 US01.</Notes>
+    </Task>
+
+    <Task>
+      <UID>10</UID><ID>10</ID><Name>T07 / US02 — lib/money: деление точными суммами + контроль остатка</Name>
+      <OutlineNumber>1.1.8</OutlineNumber><OutlineLevel>3</OutlineLevel><WBS>1.1.8</WBS>
+      <Type>1</Type><IsNull>0</IsNull><DurationFormat>21</DurationFormat>
+      <Duration>PT3H0M0S</Duration><Work>PT4H0M0S</Work>
+      <Start>2026-10-21T10:00:00</Start><Finish>2026-10-22T11:00:00</Finish>
+      <PredecessorLink><PredecessorUID>8</PredecessorUID><Type>1</Type></PredecessorLink>
+      <Notes>Исполнитель: Байгабатов М. (3 ч), помощник (пара): Тагиев Р. (1 ч). Проверяющий: Надыров А. Критерий: AC01/AC02 US02 проходят в тестах, остаток считается верно.</Notes>
+    </Task>
+
+    <Task>
+      <UID>11</UID><ID>11</ID><Name>T08 / US02 — UI точных сумм + базовое переключение способа</Name>
+      <OutlineNumber>1.1.9</OutlineNumber><OutlineLevel>3</OutlineLevel><WBS>1.1.9</WBS>
+      <Type>1</Type><IsNull>0</IsNull><DurationFormat>21</DurationFormat>
+      <Duration>PT3H0M0S</Duration><Work>PT3H0M0S</Work>
+      <Start>2026-10-23T09:00:00</Start><Finish>2026-10-26T10:00:00</Finish>
+      <PredecessorLink><PredecessorUID>9</PredecessorUID><Type>1</Type></PredecessorLink>
+      <PredecessorLink><PredecessorUID>10</PredecessorUID><Type>1</Type></PredecessorLink>
+      <Notes>Исполнитель: Надыров А. Проверяющий: Тагиев Р. Критерий: индикатор остатка обновляется, переключение сохраняет сумму расхода.</Notes>
+    </Task>
+
+    <Task>
+      <UID>12</UID><ID>12</ID><Name>T09 / US03 — блокировка сохранения при несовпадении суммы долей (BR-04)</Name>
+      <OutlineNumber>1.1.10</OutlineNumber><OutlineLevel>3</OutlineLevel><WBS>1.1.10</WBS>
+      <Type>1</Type><IsNull>0</IsNull><DurationFormat>21</DurationFormat>
+      <Duration>PT2H0M0S</Duration><Work>PT2H0M0S</Work>
+      <Start>2026-10-23T09:00:00</Start><Finish>2026-10-23T11:00:00</Finish>
+      <PredecessorLink><PredecessorUID>10</PredecessorUID><Type>1</Type></PredecessorLink>
+      <Notes>Исполнитель: Байгабатов М. Проверяющий: Тагиев Р. Критерий: AC01/AC02 US03 проходят, кнопка действительно недоступна (disabled).</Notes>
+    </Task>
+
+    <Task>
+      <UID>13</UID><ID>13</ID><Name>T10 / US01,US02,US03 — Vitest: обязательные кейсы + покрытие ≥90%</Name>
+      <OutlineNumber>1.1.11</OutlineNumber><OutlineLevel>3</OutlineLevel><WBS>1.1.11</WBS>
+      <Type>1</Type><IsNull>0</IsNull><DurationFormat>21</DurationFormat>
+      <Duration>PT4H0M0S</Duration><Work>PT4H0M0S</Work>
+      <Start>2026-10-26T09:00:00</Start><Finish>2026-10-27T11:00:00</Finish>
+      <PredecessorLink><PredecessorUID>8</PredecessorUID><Type>1</Type></PredecessorLink>
+      <PredecessorLink><PredecessorUID>10</PredecessorUID><Type>1</Type></PredecessorLink>
+      <PredecessorLink><PredecessorUID>12</PredecessorUID><Type>1</Type></PredecessorLink>
+      <Notes>Исполнитель: Тагиев Р. Критерий: npm run test -- --coverage ≥90% на изменённых файлах lib/money, все обязательные кейсы CLAUDE.md присутствуют.</Notes>
+    </Task>
+
+    <Task>
+      <UID>14</UID><ID>14</ID><Name>T11 / US01,US02,US03,US06,US07,US08 — ревью, слияние PR, запись демо</Name>
+      <OutlineNumber>1.1.12</OutlineNumber><OutlineLevel>3</OutlineLevel><WBS>1.1.12</WBS>
+      <Type>1</Type><IsNull>0</IsNull><DurationFormat>21</DurationFormat>
+      <Duration>PT2H0M0S</Duration><Work>PT2H0M0S</Work>
+      <Start>2026-10-28T09:00:00</Start><Finish>2026-10-28T11:00:00</Finish>
+      <PredecessorLink><PredecessorUID>11</PredecessorUID><Type>1</Type></PredecessorLink>
+      <PredecessorLink><PredecessorUID>12</PredecessorUID><Type>1</Type></PredecessorLink>
+      <PredecessorLink><PredecessorUID>13</PredecessorUID><Type>1</Type></PredecessorLink>
+      <Notes>Исполнитель: Тагиев Р. Критерий: PR смёржен, CI зелёный, ссылка на запись демо приложена к PR.</Notes>
+    </Task>
+
+    <Task>
+      <UID>15</UID><ID>15</ID><Name>Веха: результат готов к демонстрации</Name>
+      <OutlineNumber>1.1.13</OutlineNumber><OutlineLevel>3</OutlineLevel><WBS>1.1.13</WBS>
+      <Milestone>1</Milestone><Type>1</Type><IsNull>0</IsNull><DurationFormat>7</DurationFormat>
+      <Duration>PT0H0M0S</Duration>
+      <Start>2026-10-28T11:00:00</Start><Finish>2026-10-28T11:00:00</Finish>
+      <PredecessorLink><PredecessorUID>14</PredecessorUID><Type>1</Type></PredecessorLink>
+      <Notes>Резерв 29-30.10.2026 до формальной границы спринта не распределён ни на одну задачу (раздел 3 отчёта задания 7).</Notes>
+    </Task>
+
+    <Task>
+      <UID>16</UID><ID>16</ID><Name>Спринт 2 — Баланс и переводы (прогноз, не детализирован): TECH01, US04, US05, US09, US10</Name>
+      <OutlineNumber>1.2</OutlineNumber><OutlineLevel>2</OutlineLevel><WBS>1.2</WBS>
+      <Type>1</Type><IsNull>0</IsNull><DurationFormat>7</DurationFormat>
+      <Duration>PT160H0M0S</Duration>
+      <Start>2026-11-02T09:00:00</Start><Finish>2026-11-13T18:00:00</Finish>
+      <PredecessorLink><PredecessorUID>15</PredecessorUID><Type>1</Type></PredecessorLink>
+      <Notes>21 SP; подробная декомпозиция на задачи не требуется для этого документа (задание 7, п.6). Укрупнённая оценка ёмкости — около 29 чел.-ч (симметрично Спринту 1), без детальной почасовой разбивки.</Notes>
+    </Task>
+
+    <Task>
+      <UID>17</UID><ID>17</ID><Name>Веха: релиз Этапа E2 готов</Name>
+      <OutlineNumber>1.3</OutlineNumber><OutlineLevel>2</OutlineLevel><WBS>1.3</WBS>
+      <Milestone>1</Milestone><Type>1</Type><IsNull>0</IsNull><DurationFormat>7</DurationFormat>
+      <Duration>PT0H0M0S</Duration>
+      <Start>2026-11-13T18:00:00</Start><Finish>2026-11-13T18:00:00</Finish>
+      <PredecessorLink><PredecessorUID>16</PredecessorUID><Type>1</Type></PredecessorLink>
+      <Notes>Условие выпуска: ветка в main, CI зелёный, покрытие lib/money ≥90% (K02 устава), демо-сценарий записан.</Notes>
+    </Task>
+  </Tasks>
+
+  <Resources>
+    <Resource>
+      <UID>1</UID><ID>1</ID><Name>Байгабатов М.</Name>
+      <Type>1</Type><IsNull>0</IsNull><MaxUnits>1</MaxUnits>
+      <StandardRate>2000</StandardRate><CalendarUID>1</CalendarUID>
+      <Notes>Координатор; денежная логика T02,T05,T07(основной),T09. Доступность: 7 ч/нед (устав, раздел Ж).</Notes>
+    </Resource>
+    <Resource>
+      <UID>2</UID><ID>2</ID><Name>Надыров А.</Name>
+      <Type>1</Type><IsNull>0</IsNull><MaxUnits>1</MaxUnits>
+      <StandardRate>2000</StandardRate><CalendarUID>1</CalendarUID>
+      <Notes>Ответственный за продукт; UI-задачи T01,T04,T06,T08. Доступность: 7 ч/нед.</Notes>
+    </Resource>
+    <Resource>
+      <UID>3</UID><ID>3</ID><Name>Тагиев Р.</Name>
+      <Type>1</Type><IsNull>0</IsNull><MaxUnits>1</MaxUnits>
+      <StandardRate>2000</StandardRate><CalendarUID>1</CalendarUID>
+      <Notes>Ответственный за календарный план; тестирование и ревью T03,T10,T11 + помощник на T05/T07. Доступность: 6 ч/нед.</Notes>
+    </Resource>
+  </Resources>
+
+  <Assignments>
+    <Assignment><UID>1</UID><TaskUID>4</TaskUID><ResourceUID>2</ResourceUID><Units>1</Units><Work>PT2H0M0S</Work></Assignment>
+    <Assignment><UID>2</UID><TaskUID>5</TaskUID><ResourceUID>1</ResourceUID><Units>1</Units><Work>PT2H0M0S</Work></Assignment>
+    <Assignment><UID>3</UID><TaskUID>6</TaskUID><ResourceUID>3</ResourceUID><Units>1</Units><Work>PT1H0M0S</Work></Assignment>
+    <Assignment><UID>4</UID><TaskUID>7</TaskUID><ResourceUID>2</ResourceUID><Units>1</Units><Work>PT3H0M0S</Work></Assignment>
+    <Assignment><UID>5</UID><TaskUID>8</TaskUID><ResourceUID>1</ResourceUID><Units>1</Units><Work>PT3H0M0S</Work></Assignment>
+    <Assignment><UID>6</UID><TaskUID>8</TaskUID><ResourceUID>3</ResourceUID><Units>1</Units><Work>PT1H0M0S</Work></Assignment>
+    <Assignment><UID>7</UID><TaskUID>9</TaskUID><ResourceUID>2</ResourceUID><Units>1</Units><Work>PT2H0M0S</Work></Assignment>
+    <Assignment><UID>8</UID><TaskUID>10</TaskUID><ResourceUID>1</ResourceUID><Units>1</Units><Work>PT3H0M0S</Work></Assignment>
+    <Assignment><UID>9</UID><TaskUID>10</TaskUID><ResourceUID>3</ResourceUID><Units>1</Units><Work>PT1H0M0S</Work></Assignment>
+    <Assignment><UID>10</UID><TaskUID>11</TaskUID><ResourceUID>2</ResourceUID><Units>1</Units><Work>PT3H0M0S</Work></Assignment>
+    <Assignment><UID>11</UID><TaskUID>12</TaskUID><ResourceUID>1</ResourceUID><Units>1</Units><Work>PT2H0M0S</Work></Assignment>
+    <Assignment><UID>12</UID><TaskUID>13</TaskUID><ResourceUID>3</ResourceUID><Units>1</Units><Work>PT4H0M0S</Work></Assignment>
+    <Assignment><UID>13</UID><TaskUID>14</TaskUID><ResourceUID>3</ResourceUID><Units>1</Units><Work>PT2H0M0S</Work></Assignment>
+  </Assignments>
+</Project>
