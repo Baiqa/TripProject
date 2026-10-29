@@ -22,7 +22,7 @@ import {
   type DemoExpense,
   type DemoExpenseCategory,
 } from "@/mocks/demo-trip";
-import { formatDemoMoney } from "@/mocks/format-demo-money";
+import { checkExactSplit, formatMoney, minorToDecimalString, parseMoneyInput, splitEqual } from "@/lib/money";
 
 const CATEGORY_LABEL: Record<DemoExpenseCategory, string> = {
   accommodation: "Проживание",
@@ -39,26 +39,10 @@ const SEGMENT_ITEMS = {
   ...Object.fromEntries(DEMO_SEGMENTS.map((s) => [s.id, s.title])),
 };
 
-/**
- * Предпросмотр деления поровну — только для интерактивности макета.
- * Настоящий расчёт (и его тесты) — src/lib/money на этапе 2, по BR-02.
- */
-function previewEqualSplit(totalMinor: number, participantIds: string[]): Record<string, number> {
-  const n = participantIds.length;
-  if (n === 0) return {};
-  const base = Math.floor(totalMinor / n);
-  const remainder = totalMinor - base * n;
-  const result: Record<string, number> = {};
-  participantIds.forEach((id, index) => {
-    result[id] = base + (index < remainder ? 1 : 0);
-  });
-  return result;
-}
-
 export function ExpenseForm({ initialExpense }: { initialExpense?: DemoExpense }) {
   const [title, setTitle] = useState(initialExpense?.title ?? "");
   const [amountInput, setAmountInput] = useState(
-    initialExpense ? (initialExpense.amountOriginalMinor / 100).toFixed(2) : "",
+    initialExpense ? minorToDecimalString(initialExpense.amountOriginalMinor, DEMO_TRIP.baseCurrency) : "",
   );
   const [segmentId, setSegmentId] = useState<string>(initialExpense?.segmentId ?? "none");
   const [splitType, setSplitType] = useState<"equal" | "exact">(initialExpense?.splitType ?? "equal");
@@ -75,18 +59,32 @@ export function ExpenseForm({ initialExpense }: { initialExpense?: DemoExpense }
   const [exactShares, setExactShares] = useState<Record<string, string>>(() => {
     const initial: Record<string, string> = {};
     initialExpense?.splits.forEach((s) => {
-      initial[s.memberId] = (s.shareMinor / 100).toFixed(2);
+      initial[s.memberId] = minorToDecimalString(s.shareMinor, DEMO_TRIP.baseCurrency);
     });
     return initial;
   });
 
-  const totalMinor = Math.round(parseFloat(amountInput || "0") * 100) || 0;
-  const equalPreview = previewEqualSplit(totalMinor, participantIds);
-  const exactSum = participantIds.reduce(
-    (sum, id) => sum + Math.round(parseFloat(exactShares[id] || "0") * 100),
-    0,
-  );
-  const remainder = totalMinor - exactSum;
+  // US07/US08: разбор ввода суммы только через parseMoneyInput, без parseFloat.
+  const parsedAmount = parseMoneyInput(amountInput, DEMO_TRIP.baseCurrency);
+  const amountError =
+    amountInput.trim() === ""
+      ? null
+      : parsedAmount === null
+        ? "Введите число"
+        : parsedAmount <= 0
+          ? "Сумма должна быть больше нуля"
+          : null;
+  const totalMinor = parsedAmount !== null && parsedAmount > 0 ? parsedAmount : 0;
+
+  const equalPreview = splitEqual(totalMinor, participantIds);
+
+  const exactShareValues = participantIds.reduce<Record<string, number>>((acc, id) => {
+    const parsed = parseMoneyInput(exactShares[id] ?? "", DEMO_TRIP.baseCurrency);
+    acc[id] = parsed !== null && parsed > 0 ? parsed : 0;
+    return acc;
+  }, {});
+  // US02/US03, BR-04: сумма долей сверяется с суммой расхода через checkExactSplit.
+  const { balanced: exactBalanced, remainder } = checkExactSplit(totalMinor, exactShareValues);
 
   function toggleParticipant(id: string) {
     setParticipantIds((prev) =>
@@ -94,7 +92,11 @@ export function ExpenseForm({ initialExpense }: { initialExpense?: DemoExpense }
     );
   }
 
-  const canSave = totalMinor > 0 && participantIds.length > 0 && (splitType === "equal" || remainder === 0);
+  const canSave =
+    amountError === null &&
+    totalMinor > 0 &&
+    participantIds.length > 0 &&
+    (splitType === "equal" || exactBalanced);
 
   return (
     <Card>
@@ -120,13 +122,17 @@ export function ExpenseForm({ initialExpense }: { initialExpense?: DemoExpense }
             <Label htmlFor="expense-amount">Сумма ({DEMO_TRIP.baseCurrency})</Label>
             <Input
               id="expense-amount"
-              type="number"
-              min="0"
-              step="0.01"
+              type="text"
+              inputMode="decimal"
               value={amountInput}
               onChange={(e) => setAmountInput(e.target.value)}
               data-testid="expense-amount"
             />
+            {amountError && (
+              <p className="text-sm text-destructive" data-testid="expense-amount-error">
+                {amountError}
+              </p>
+            )}
           </div>
           <div className="flex flex-col gap-2">
             <Label htmlFor="expense-date">Дата</Label>
@@ -237,7 +243,7 @@ export function ExpenseForm({ initialExpense }: { initialExpense?: DemoExpense }
                   <div key={id} className="flex justify-between px-3 py-2">
                     <span>{member.displayName}</span>
                     <span className="font-medium">
-                      {formatDemoMoney(equalPreview[id] ?? 0, DEMO_TRIP.baseCurrency)}
+                      {formatMoney(equalPreview[id] ?? 0, DEMO_TRIP.baseCurrency)}
                     </span>
                   </div>
                 );
@@ -251,9 +257,8 @@ export function ExpenseForm({ initialExpense }: { initialExpense?: DemoExpense }
                   <div key={id} className="flex items-center justify-between gap-3">
                     <span className="text-sm">{member.displayName}</span>
                     <Input
-                      type="number"
-                      min="0"
-                      step="0.01"
+                      type="text"
+                      inputMode="decimal"
                       className="w-32"
                       value={exactShares[id] ?? ""}
                       onChange={(e) =>
@@ -270,7 +275,7 @@ export function ExpenseForm({ initialExpense }: { initialExpense?: DemoExpense }
               >
                 {remainder === 0
                   ? "Сумма долей сходится с суммой расхода"
-                  : `Не распределено: ${formatDemoMoney(remainder, DEMO_TRIP.baseCurrency)}`}
+                  : `Не распределено: ${formatMoney(remainder, DEMO_TRIP.baseCurrency)}`}
               </p>
             </div>
           )}
