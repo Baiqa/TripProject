@@ -14,7 +14,7 @@ describe("splitEqual", () => {
     expect(splitEqual(1, ["a", "b", "c"])).toEqual({ a: 1, b: 0, c: 0 });
   });
 
-  it("is deterministic for the same input", () => {
+  it("BR-02: splitEqual is deterministic — repeated calls with same input return the same result", () => {
     expect(splitEqual(100, ["a", "b", "c"])).toEqual(splitEqual(100, ["a", "b", "c"]));
   });
 
