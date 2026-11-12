@@ -14,7 +14,7 @@ describe("splitEqual", () => {
     expect(splitEqual(1, ["a", "b", "c"])).toEqual({ a: 1, b: 0, c: 0 });
   });
 
-  it("is deterministic for the same input", () => {
+  it("CLAUDE.md: repeated calculation with the same input gives the same result (determinism)", () => {
     expect(splitEqual(100, ["a", "b", "c"])).toEqual(splitEqual(100, ["a", "b", "c"]));
   });
 
